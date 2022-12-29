@@ -2,6 +2,9 @@
 	"name": "jrgamer4u-gaming",
 	"version": "1.0.0",
 	"main": "index.js",
+	"scripts": {
+		"bot": "node index.js"
+	},
 	"dependencies": {
 		"discord.js": "^14.7.1",
 		"dotenv": "^16.0.3"
