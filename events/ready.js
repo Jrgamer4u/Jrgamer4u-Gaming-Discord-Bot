@@ -2,7 +2,7 @@ module.exports = {
 	name: "ready",
 	once: true,
 	execute(client) {
-		client.user.setActivity("JRGG | Slash Commands!");
+		client.user.setActivity("OBR | Slash Commands!");
 		console.log(`Ready!`);
 	},
 };
