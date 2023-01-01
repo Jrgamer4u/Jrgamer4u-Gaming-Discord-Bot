@@ -1,3 +1,4 @@
+const keepAlive = require("./server.js");
 const fs = require("node:fs");
 const {
 	Client,
@@ -49,5 +50,7 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
+
+keepAlive();
 
 client.login(process.env.TOKEN);
