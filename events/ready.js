@@ -3,6 +3,6 @@ module.exports = {
 	once: true,
 	execute(client) {
 		client.user.setActivity("OBR | Slash Commands!");
-		console.log(`Ready!`);
+		console.log('Ready!');
 	},
 };
