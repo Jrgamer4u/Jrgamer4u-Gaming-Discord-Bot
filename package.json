@@ -1,14 +1,17 @@
 {
-	"name": "obr",
-	"version": "2.0.0",
-	"main": "index.js",
-	"scripts": {
-		"bot": "node index.js"
-	},
-	"dependencies": {
-		"discord.js": "^14.7.1",
-		"dotenv": "^16.0.3",
-		"express": "^4.18.2",
-		"easy-json-database": "^1.5.0"
-	}
+  "name": "obr",
+  "version": "2.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": "^16.14.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "easy-json-database": "^1.5.0"
+  }
 }
