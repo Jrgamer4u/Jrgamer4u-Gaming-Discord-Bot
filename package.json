@@ -2,8 +2,11 @@
 	"name": "obr",
 	"version": "2.0.0",
 	"main": "index.js",
+	"engines": {
+		"node": "^16.14.2"
+	},
 	"scripts": {
-		"bot": "node index.js"
+		"start": "node index.js"
 	},
 	"dependencies": {
 		"discord.js": "^14.7.1",

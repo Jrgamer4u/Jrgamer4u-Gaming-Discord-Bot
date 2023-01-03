@@ -21,7 +21,6 @@
 | OBR 1.0.1  |                  | :x:                | :x:                |
 | OBR 1      |                  | :x:                | :x:                |
 
-
 ## Reporting a Vulnerability
 
 To report a vulnerability, submit the vulnerability in the github.
