@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require("discord.js");
 var currentdate = new Date();
 var datetime = "Date Time: " + currentdate.getDate() + "/"
 	+ (currentdate.getMonth() + 1) + "/"
@@ -9,8 +9,8 @@ var datetime = "Date Time: " + currentdate.getDate() + "/"
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('time')
-		.setDescription('shows the time'),
+		.setName("time")
+		.setDescription("shows the time"),
 	async execute(interaction) {
 		return interaction.reply(datetime);
 	},

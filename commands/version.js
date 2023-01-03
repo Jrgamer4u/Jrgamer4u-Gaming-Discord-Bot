@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('version')
-		.setDescription('shows version'),
+		.setName("version")
+		.setDescription("shows version"),
 	async execute(interaction) {
-		return interaction.reply('OBR Second MileStone');
+		return interaction.reply("OBR Second MileStone");
 	},
 };
