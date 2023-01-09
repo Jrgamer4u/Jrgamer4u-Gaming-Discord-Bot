@@ -5,6 +5,6 @@ module.exports = {
 		.setName("version")
 		.setDescription("shows version"),
 	async execute(interaction) {
-		return interaction.reply("OBR Second MileStone");
+		return interaction.reply("OBR Welcome 2023");
 	},
 };
