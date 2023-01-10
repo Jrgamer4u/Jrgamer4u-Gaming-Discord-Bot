@@ -13,3 +13,8 @@ Code For OBR.
 You should use Dockerfile to build and run your bot.
 postgres is used for click commands, and a table has to be made for it to work.
 Do not forget to set a number for the total click number.
+
+Updating the bot
+git pull
+docker compose build
+docker compose down && docker compose up -d

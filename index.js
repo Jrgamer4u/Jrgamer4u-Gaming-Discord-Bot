@@ -24,12 +24,12 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
+const rest = new REST({ version: "10" }).setToken(process.env.OBRBOT_TOKEN);
 
 (async () => {
 	try {
 		rest
-			.put(Routes.applicationCommands(process.env.CLIENTID), { body: commands })
+			.put(Routes.applicationCommands(process.env.OBRBOT_CLIENTID), { body: commands })
 			.then(() => console.log("Successfully registered application commands."))
 			.catch(console.error);
 	} catch (error) {
@@ -53,4 +53,4 @@ for (const file of eventFiles) {
 
 keepAlive();
 
-client.login(process.env.TOKEN);
+client.login(process.env.OBRBOT_TOKEN);

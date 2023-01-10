@@ -1,7 +1,7 @@
 const { Octokit } = require("@octokit/rest");
 
 const octokit = new Octokit({
-	auth: `${process.env.YOUR_GITHUB_ACCESS_TOKEN}`,
+	auth: `${process.env.GITHUB_ACCESS_TOKEN}`,
 });
 
 async function createIssue(repoOwner, repoName, title, body) {
