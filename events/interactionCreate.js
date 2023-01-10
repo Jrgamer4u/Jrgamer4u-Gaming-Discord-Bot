@@ -1,8 +1,8 @@
-const { Octokit } = require('@octokit/rest')
+const { Octokit } = require("@octokit/rest");
 
 const octokit = new Octokit({
-	auth: `${process.env.YOUR_GITHUB_ACCESS_TOKEN}`
-})
+	auth: `${process.env.YOUR_GITHUB_ACCESS_TOKEN}`,
+});
 
 async function createIssue(repoOwner, repoName, title, body) {
 	try {
@@ -10,11 +10,11 @@ async function createIssue(repoOwner, repoName, title, body) {
 			owner: repoOwner,
 			repo: repoName,
 			title: title,
-			body: body
-		})
-		console.log(`Created issue: ${issue.data.html_url}`)
+			body: body,
+		});
+		console.log(`Created issue: ${issue.data.html_url}`);
 	} catch (error) {
-		console.error(error)
+		console.error(error);
 	}
 }
 
@@ -22,7 +22,6 @@ module.exports = {
 	name: "interactionCreate",
 	async execute(interaction) {
 		if (interaction.isChatInputCommand()) {
-
 			const command = interaction.client.commands.get(interaction.commandName);
 
 			if (!command) {
@@ -42,15 +41,21 @@ module.exports = {
 					ephemeral: true,
 				});
 			}
-		}
-		else if (interaction.isModalSubmit()) {
-			if (interaction.customId === 'suggestion') {
-				const title = interaction.fields.getTextInputValue('titleInput');
-				const suggestion = interaction.fields.getTextInputValue('suggestionInput');
-				await createIssue('Jrgamer4u', 'OBR', `${interaction.user.username}: ${title}`, `${suggestion}`)
-				await interaction.reply({ content: 'Your submission was received successfully!' });
+		} else if (interaction.isModalSubmit()) {
+			if (interaction.customId === "suggestion") {
+				const title = interaction.fields.getTextInputValue("titleInput");
+				const suggestion =
+					interaction.fields.getTextInputValue("suggestionInput");
+				await createIssue(
+					"Jrgamer4u",
+					"OBR",
+					`${interaction.user.username}: ${title}`,
+					`${suggestion}`
+				);
+				await interaction.reply({
+					content: "Your submission was received successfully!",
+				});
 			}
-		}
-		else return;
+		} else return;
 	},
 };

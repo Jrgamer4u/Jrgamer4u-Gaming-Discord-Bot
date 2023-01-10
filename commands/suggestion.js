@@ -1,24 +1,30 @@
-const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, SlashCommandBuilder } = require("discord.js");
+const {
+	ActionRowBuilder,
+	ModalBuilder,
+	TextInputBuilder,
+	TextInputStyle,
+	SlashCommandBuilder,
+} = require("discord.js");
 
 require("dotenv").config();
 
 // Create the modal
 const modal = new ModalBuilder()
-	.setCustomId('suggestion')
-	.setTitle('Suggestion');
+	.setCustomId("suggestion")
+	.setTitle("Suggestion");
 
 // Add components to modal
 
 // Create the text input components
 const titleInput = new TextInputBuilder()
-	.setCustomId('titleInput')
+	.setCustomId("titleInput")
 	// The label is the prompt the user sees for this input
-	.setLabel("What's is your suggestion")
+	.setLabel("What’s is your suggestion")
 	// Short means only a single line of text
 	.setStyle(TextInputStyle.Short);
 
 const suggestionInput = new TextInputBuilder()
-	.setCustomId('suggestionInput')
+	.setCustomId("suggestionInput")
 	.setLabel("Write about it.")
 	// Paragraph means multiple lines of text.
 	.setStyle(TextInputStyle.Paragraph);

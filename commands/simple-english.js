@@ -14,13 +14,11 @@ module.exports = {
 		.setDescription("says a sentence in simple english"),
 	async execute(interaction) {
 		return interaction.reply(
-			n.get(`${mathRandomInt(1, 600)}`) +
-			" " +
-			v.get(`${mathRandomInt(1, 17)}`) +
-			" " +
-			d.get(`${mathRandomInt(1, 17)}`) +
-			" " +
-			n.get(`${mathRandomInt(1, 600)}`)
+			`${n.get(`${mathRandomInt(1, 600)}`)} ${v.get(
+				`${mathRandomInt(1, 17)}`
+			)} ${d.get(`${mathRandomInt(1, 17)}`)} ${n.get(
+				`${mathRandomInt(1, 600)}`
+			)}`
 		);
 	},
 };
