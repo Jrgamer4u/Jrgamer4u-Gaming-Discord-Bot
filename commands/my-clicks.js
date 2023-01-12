@@ -1,19 +1,20 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { getClient } = require("../get-client");
+const Database = require("easy-json-database");
+const clicks = new Database("./database/clicks.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("my-clicks")
 		.setDescription("what is your amount"),
 	async execute(interaction) {
-		const client = await getClient();
 		const id = interaction.user.id;
-		const cli = await client.query(
-			"SELECT clicks FROM my_table WHERE id = $1;",
-			[id]
-		);
-		return interaction.reply(
-			`You have ${cli.rows.map((r) => Object.values(r))} clicks.`
-		);
+		if (clicks.has(`${id}`) == false) {
+			clicks.push(`${id}`, 0);
+		}
+		if (clicks.has(`${id}`) == 1) {
+			return interaction.reply(`You have ${clicks.get(`${id}`)} click.`);
+		} else {
+			return interaction.reply(`You have ${clicks.get(`${id}`)} clicks.`);
+		}
 	},
 };

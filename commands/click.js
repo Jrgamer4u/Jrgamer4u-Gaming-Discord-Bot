@@ -1,47 +1,23 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { getClient } = require("../get-client");
+const Database = require("easy-json-database");
+const clicks = new Database("./database/clicks.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("click")
 		.setDescription("a thing i made"),
 	async execute(interaction) {
-		const client = await getClient();
 		const id = interaction.user.id;
-		const total = -1;
-		const entries = await client.query(
-			"SELECT * FROM my_table WHERE id = $1;",
-			[id]
-		);
-		if (entries.rowCount == 0) {
-			const clicks = 1;
-			await client.query("INSERT INTO my_table(id, clicks) VALUES($1, $2);", [
-				`${id}`,
-				`${clicks}`,
-			]);
-			await client.query(
-				"UPDATE my_table SET clicks = clicks + 1 WHERE total = $1;",
-				[`${total}`]
-			);
-			console.log(`Inserted`);
+		if (clicks.has("total") == false) {
+			clicks.push("total", 1);
 		} else {
-			await client.query(
-				"UPDATE my_table SET clicks = clicks + 1 WHERE id = $1;",
-				[`${id}`]
-			);
-			await client.query(
-				"UPDATE my_table SET clicks = clicks + 1 WHERE total = $1;",
-				[`${total}`]
-			);
-			console.log(`Updated`);
+			clicks.add("total", 1);
 		}
-		const cli = await client.query(
-			"SELECT clicks FROM my_table WHERE id = $1;",
-			[id]
-		);
-		await interaction.reply(
-			`Click!\nYou have ${cli.rows.map((r) => Object.values(r))} clicks.`
-		);
-		await client.end();
+		if (clicks.has(`${id}`) == false) {
+			clicks.push(`${id}`, 1);
+		} else {
+			clicks.add(`${id}`, 1);
+		}
+		return interaction.reply("Click!");
 	},
 };
