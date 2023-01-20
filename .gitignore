@@ -6,4 +6,3 @@ node_modules
 .glitchdotcom.json
 .node-gyp
 shrinkwrap.yaml
-database/clicks.json
