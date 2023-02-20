@@ -10,8 +10,5 @@
 
 Code For OBR.
 
-You should use Dockerfile to build and run your bot.
-
-Running the bot:
-``docker compose build``
-``docker run obr-bot``
+Now uses deno.
+``deno run --allow-env --allow-read --allow-net -A index.js``

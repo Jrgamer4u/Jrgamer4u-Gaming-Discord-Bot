@@ -1,12 +1,4 @@
-const {
-	ActionRowBuilder,
-	ModalBuilder,
-	TextInputBuilder,
-	TextInputStyle,
-	SlashCommandBuilder,
-} = require("discord.js");
-
-require("dotenv").config();
+import { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, SlashCommandBuilder } from "npm:discord.js@14.7.1";
 
 // Create the modal
 const modal = new ModalBuilder()
@@ -37,11 +29,9 @@ const secondActionRow = new ActionRowBuilder().addComponents(suggestionInput);
 // Add inputs to the modal
 modal.addComponents(firstActionRow, secondActionRow);
 
-module.exports = {
-	data: new SlashCommandBuilder()
-		.setName("suggestion")
-		.setDescription("Send a suggestion to GitHub, where i can see it."),
-	async execute(interaction) {
-		await interaction.showModal(modal);
-	},
-};
+export const data = new SlashCommandBuilder()
+	.setName("suggestion")
+	.setDescription("Send a suggestion to GitHub, where i can see it.");
+export async function execute(interaction) {
+	await interaction.showModal(modal);
+}

@@ -1,35 +1,27 @@
-const keepAlive = require("./server.js");
-const fs = require("node:fs");
-const {
-	Client,
-	Collection,
-	GatewayIntentBits,
-	REST,
-	Routes,
-} = require("discord.js");
-
-require("dotenv").config();
+import keepAlive from "./server.js";
+import { readdirSync } from "node:fs";
+import { Client, Collection, GatewayIntentBits, REST, Routes } from "npm:discord.js@14.7.1";
+import "https://deno.land/std@0.177.0/dotenv/load.ts";
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 const commands = [];
 client.commands = new Collection();
-const commandFiles = fs
-	.readdirSync("./commands")
+const commandFiles = readdirSync("./commands")
 	.filter((file) => file.endsWith(".js"));
 
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
+	const command = await import(`./commands/${file}`);
 	commands.push(command.data.toJSON());
 	client.commands.set(command.data.name, command);
 }
 
-const rest = new REST({ version: "10" }).setToken(process.env.OBRBOT_TOKEN);
+const rest = new REST({ version: "10" }).setToken(Deno.env.get("OBRBOT_TOKEN"));
 
 (async () => {
 	try {
-		rest
-			.put(Routes.applicationCommands(process.env.OBRBOT_CLIENTID), { body: commands })
+		await rest
+			.put(Routes.applicationCommands(Deno.env.get("OBRBOT_CLIENTID")), { body: commands })
 			.then(() => console.log("Successfully registered application commands."))
 			.catch(console.error);
 	} catch (error) {
@@ -38,12 +30,11 @@ const rest = new REST({ version: "10" }).setToken(process.env.OBRBOT_TOKEN);
 	}
 })();
 
-const eventFiles = fs
-	.readdirSync("./events")
+const eventFiles = readdirSync("./events")
 	.filter((file) => file.endsWith(".js"));
 
 for (const file of eventFiles) {
-	const event = require(`./events/${file}`);
+	const event = await import(`./events/${file}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
@@ -53,4 +44,4 @@ for (const file of eventFiles) {
 
 keepAlive();
 
-client.login(process.env.OBRBOT_TOKEN);
+client.login(Deno.env.get("OBRBOT_TOKEN"));

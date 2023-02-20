@@ -1,10 +1,8 @@
-const { SlashCommandBuilder } = require("discord.js");
+import { SlashCommandBuilder } from "npm:discord.js@14.7.1";
 
-module.exports = {
-	data: new SlashCommandBuilder()
-		.setName("pi")
-		.setDescription("says 15 digits of pi"),
-	async execute(interaction) {
-		return interaction.reply(`${Math.PI}`);
-	},
-};
+export const data = new SlashCommandBuilder()
+	.setName("pi")
+	.setDescription("says 15 digits of pi");
+export async function execute(interaction) {
+	await interaction.reply(`${Math.PI}`);
+}

@@ -4,7 +4,7 @@
 
 | Version     | Name             | SpyEye             | Supported          |
 | ----------- | ---------------- | ------------------ | ------------------ |
-| OBR 2.1.0   | Welcome 2023     | :x:                | :white_check_mark: |
+| OBR 2.1.0   | Denoization      | :x:                | :white_check_mark: |
 | OBR 2.0.0   | Second MileStone | :x:                | :white_check_mark: |
 | OBR Rolling | Legacy           | :white_check_mark: | :x:                |
 | OBR 1.2.2   |                  | :white_check_mark: | :x:                |

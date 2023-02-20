@@ -1,8 +1,6 @@
-module.exports = {
-	name: "ready",
-	once: true,
-	execute(client) {
-		client.user.setActivity("OBR | Slash Commands!");
-		console.log("Ready!");
-	},
-};
+export const name = "ready";
+export const once = true;
+export function execute(client) {
+	client.user.setActivity("OBR | Slash Commands!");
+	console.log("Ready!");
+}
